@@ -1,0 +1,204 @@
+<%
+    var url = urlBuilder('ste', 'TRX_AdditionalServiceAccepted_US_20200907', User.AutoLoginCode, User.UserGUID);
+    
+    document.logoUrl = url(User.BaseDomain, 'jalogo_im');
+    document.jaFooterUrl = url(User.BaseDomain, 'jacom_ln');
+    document.customerServUrl = url("ww2.justanswer.com/help", "custServ_ln");
+    document.questionUrl = (User.BaseDomain + '/question/index/' + Question.QuestionID);
+    document.viewAnswer = url(document.questionUrl, "viewanswer_bu");
+    //we use this parameter in Sender
+    document.expertName = LastExpertAnswer.ExpertName;
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>I just responded to your <%= Question.CategorySubName %> question</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+    *{
+      -ms-text-size-adjust:100%;
+      -webkit-text-size-adjust:none;
+      -webkit-text-resize:100%;
+      text-resize:100%;
+    }
+    a{outline:none;}
+    a:hover{text-decoration:none !important;}
+    .button-outlook:hover,
+    .active:hover{opacity:0.8;}
+    .button-outlook,
+    .active{
+      -webkit-transition:all 0.3s ease;
+        -moz-transition:all 0.3s ease;
+        -ms-transition:all 0.3s ease;
+          transition:all 0.3s ease;
+    }
+    .ExternalClass, .ExternalClass a, .ExternalClass span, .ExternalClass b, .ExternalClass br, .ExternalClass p, .ExternalClass div{line-height:inherit;}
+    table td{border-collapse:collapse !important;}
+    @media only screen and (max-width:500px) {
+      table[class="wrapper"]{min-width:320px !important;}
+      table[class="flexible"]{width:100% !important;}
+      td[class="hide"],
+      td[class="hide"] img,
+      span[class="hide"],
+      br[class="hide"],
+      td[class="fix-gmail"]{
+        display:none !important;
+        width:0 !important;
+        height:0 !important;
+        padding:0 !important;
+        font-size:0 !important;
+        line-height:0 !important;
+      }
+      td[class="img-flex"] img{
+        width:100% !important;
+        height:auto !important;
+      }
+      td[class="logo"]{padding:0 0 27px !important;}
+      td[class="logo"] img{
+        width:139px !important;
+        height:auto !important;
+      }
+      td[class="aligncenter"]{text-align:center !important;}
+      td[class="width-auto"]{
+        width:auto !important;
+        font-size:14px !important;
+        line-height:16px !important;
+      }
+      td[class="indent-01"]{padding:15px 5px 19px !important;}
+      td[class="indent-02"]{padding:17px 20px 14px !important;}
+      td[class="indent-03"]{padding:0 0 15px !important;}
+      td[class="indent-04"]{padding:20px 7px 18px !important;}
+      td[class="indent-05"]{padding:5px 17px 15px !important;}
+      td[class="height-22"]{height:22px !important;}
+      td[class="footer-info"]{
+        font-size:14px !important;
+        line-height:17px !important;
+        padding-left:24px !important;
+      }
+    }
+  .active1 {      -webkit-transition:all 0.3s ease;
+        -moz-transition:all 0.3s ease;
+        -ms-transition:all 0.3s ease;
+          transition:all 0.3s ease;
+}
+.button-outlook1 {      -webkit-transition:all 0.3s ease;
+        -moz-transition:all 0.3s ease;
+        -ms-transition:all 0.3s ease;
+          transition:all 0.3s ease;
+}
+  </style>
+</head>
+<body style="margin:0; padding:0;" link="#666666" bgcolor=#f5f5f5>
+<!--[if gte mso 12]>
+  <style type="text/css">
+    .button-outlook{padding:13px 16px 14px !important;}
+    .button-outlook a{padding:0 !important;}
+  </style>
+<![endif]-->
+
+<table class="wrapper" width="100%" cellspacing="0" cellpadding="0" >
+  <tr>
+    <td>
+      <table class="flexible" align="center" width="616" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+        <tr><td class="logo" style="padding:11px 35px 24px; border:none; text-align:right; font:16px/24px  Helvetica, sans-serif; color:#999999;"><a _label="jalogo_im" href="<%=document.logoUrl %>" target="_blank"><img align="left" src="http://ww2.justanswer.com/em/en/ma/te/logo.png" border="0" style="vertical-align:top;" width="164" height="49" alt="Just Answer" /></a>
+        <% if((Question.OrderNumber || "").trim()) { %>
+                     <font style="font:12px/20px  Helvetica, sans-serif; color:#999999;">Order ID:</font> <br /><%=Question.OrderNumber %>
+                <% } %>
+        </td></tr>
+        
+        <tr >
+          <td class="indent-02" style="padding:11px 35px 3px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr><td> <img align="left" src="http://ww2.justanswer.com/em/en/ma/te/color_gradient_bar.png" border="0" style="vertical-align:top;" width="543" height="" alt="Just Answer" />
+        </td></tr>
+              <tr bgcolor="#ffffff">
+                <td style="padding:10px 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;"> Hi <%=User.FirstName || 'there'%>,</td>
+              </tr>
+              <tr bgcolor="#ffffff">
+                <td style="padding:0 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;"> <% if (PremiumService.IsFreeService)
+                 { %>Thank you for your order!<br>We wanted to confirm that we got your <%=Question.CategorySubName%> question and <%=PremiumService.ServiceName%> request. And just to be clear—you won’t be charged for this <%=PremiumService.ServiceName%>. It is free at this time with your membership.  <% } else { %> Thank you for your order. We see you accepted an offer for a <%= PremiumService.ServiceName %> regarding your <%= Question.CategorySubName %> question so we have charged your credit card ending in: <%=PaymentAccount.CcLastFourDigits %> for <%= formatCurrency(PremiumService.CurrencyISONumber, PremiumService.Price) %>. <% } %></td>
+              </tr>
+              
+              
+              <tr bgcolor="#ffffff">
+              <td>
+                <table width = "95%" align="center">
+                <tr>
+                <td style="padding:10px 30px 14px; font:16px/24px  Helvetica, sans-serif; color:#333; box-sizing:border-box; border-style:solid; border-color:#00BF8f; border-width:1px;">
+                 <strong>An Expert will be with you shortly. Here are some helpful tips to get the most out of your added service:</strong>
+                 <table>
+                
+                
+<tr>
+<td style="padding:0 0px 5px "><font size="+2" style="color: #00BF8F; vertical-align:top;"> &#10003;</font></td>
+<td style="padding:0 10px 5px; font:16px/24px  Helvetica, sans-serif; color:#333;"> Share the best phone number to reach you</td>
+</tr>
+<tr>
+<td style="padding:0 0 5px "><font size="+2" style="color: #00BF8F; vertical-align:top"> &#10003;</font></td>
+<td style="padding:0 10px 5px; font:16px/24px  Helvetica, sans-serif; color:#333;"> Look for a response from the Expert with their availability – you can also let them know you’re ready</td></tr>
+<tr>
+                    
+<td style="padding:0 0 5px"><font size="+2" style="color: #00BF8F; vertical-align:top"> &#10003;</font></td>
+<td style="padding:0 10px 5px; font:16px/24px  Helvetica, sans-serif; color:#333;">We’ll quickly find another Expert if yours is unavailable</td>
+</tr>
+<tr>
+<td style="padding:0 0 5px "><font size="+2" style="color: #00BF8F; vertical-align:top"> &#10003;</font></td>
+<td style="padding:0 10px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;">If for any reason you’re not happy, let the Expert know – they’ll continue to help until you’re satisfied.</td>
+</tr>
+                  </table></td>
+                  </tr>
+                  </table>
+                  </td>
+              </tr>
+           <tr bgcolor="#ffffff">
+                <td style="padding:15px 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="button-outlook" bgcolor="#e85c41" align="center" style="border-radius:3px; font:bold 18px/20px  Helvetica, sans-serif; color:#fff;"><a _label="viewanswer_bu" href="<%=document.viewAnswer %>" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:13px 16px 14px;">Return to your conversation</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr bgcolor="#ffffff">
+                <td style="padding:0 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;">Thank you,<br />The JustAnswer Team</td>
+              </tr>
+              
+            </table>
+          </td>
+        </tr>
+         <tr>
+          <td class="indent-05" style="padding:0px 36px 24px 36px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+<td>
+<table class=flexible style="margin: 0px auto; padding-bottom:15px;" cellspacing=0 cellpadding=0 
+      width=100% align=center >
+        <tbody>
+        <tr>
+                <td>
+                  <table width="75" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+                    <tr>
+                      <td class="active" valign="top"><a _label="fb_bu" href="https://www.facebook.com/justanswer/" target="_blank"><img src="http://ww2.justanswer.com/em/en/ma/te/fb_logo_welcome.png" border="0" style="vertical-align:top;" width="30" height="30" alt="facebook" /></a></td>
+                      <td class="active" valign="top"><a _label="fb_bu" href="https://twitter.com/justanswer/" target="_blank"><img src="http://ww2.justanswer.com/em/en/ma/te/twittr_logo_welcome.png" border="0" style="vertical-align:top;" width="30" height="30" alt="twitter" /></a></td>
+                    </tr>
+                  </table>
+                  <table class="flexible" width="445" align="right" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+                    
+                  </table>
+     
+         </tbody>
+      </table>
+      </td>
+      </tr>
+              <tr>
+                <td style="padding:0 0 14px; font: 12px  Helvetica, sans-serif; color:#bdbdbd; ">This message was delivered to you, <a style="color: #52bad5; text-decoration: none" href="mailto:<%=User.EmailAddress %>"><%=User.EmailAddress %></a>,  because you asked a(n) <%= Question.CategorySubName %> question on <a _label="jacom_ln" style="color: #52bad5; text-decoration: none" href="<%=document.jaFooterUrl %>" target="new">JustAnswer.com</a>. If you feel you have received this message in error, please contact <a _label="contactsupp_ln" style="text-decoration:none; color:#52bad5;" href="http://<%= document.customerServUrl %>" target="new">customer service</a>.</td>
+              </tr>
+              <tr>
+                <td style="padding:0 0 14px; font: 12px  Helvetica, sans-serif; color:#bdbdbd; ">Copyright <%= formatDate(new Date(), "%4Y") %> JustAnswer LLC. All rights reserved. JustAnswer is a trademark of JustAnswer LLC. P.O. Box 29045, San Francisco, CA 94129</td>
+              </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
