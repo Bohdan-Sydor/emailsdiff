@@ -1,18 +1,8 @@
-<%
-    var url = urlBuilder('ste', 'TRX_AdditionalServiceAccepted_US_20200907', User.AutoLoginCode, User.UserGUID);
-    
-    document.logoUrl = url(User.BaseDomain, 'jalogo_im');
-    document.jaFooterUrl = url(User.BaseDomain, 'jacom_ln');
-    document.customerServUrl = url("ww2.justanswer.com/help", "custServ_ln");
-    document.questionUrl = (User.BaseDomain + '/question/index/' + Question.QuestionID);
-    document.viewAnswer = url(document.questionUrl, "viewanswer_bu");
-    //we use this parameter in Sender
-    document.expertName = LastExpertAnswer.ExpertName;
-%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>I just responded to your <%= Question.CategorySubName %> question</title>
+  <title>I just responded to your law question</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     *{
@@ -100,10 +90,10 @@
   <tr>
     <td>
       <table class="flexible" align="center" width="616" cellpadding="0" cellspacing="0" style="margin:0 auto;">
-        <tr><td class="logo" style="padding:11px 35px 24px; border:none; text-align:right; font:16px/24px  Helvetica, sans-serif; color:#999999;"><a _label="jalogo_im" href="<%=document.logoUrl %>" target="_blank"><img align="left" src="http://ww2.justanswer.com/em/en/ma/te/logo.png" border="0" style="vertical-align:top;" width="164" height="49" alt="Just Answer" /></a>
-        <% if((Question.OrderNumber || "").trim()) { %>
-                     <font style="font:12px/20px  Helvetica, sans-serif; color:#999999;">Order ID:</font> <br /><%=Question.OrderNumber %>
-                <% } %>
+        <tr><td class="logo" style="padding:11px 35px 24px; border:none; text-align:right; font:16px/24px  Helvetica, sans-serif; color:#999999;"><a _label="jalogo_im" href="https://my-secure.justanswer.com?jats=454545&r=ste|TRX_AdditionalServiceAccepted_US_20200907|4343|jalogo_im&utm_content=jalogo_im&utm_campaign=TRX_AdditionalServiceAccepted_US_20200907&utm_source=sys&utm_medium=email" target="_blank"><img align="left" src="http://ww2.justanswer.com/em/en/ma/te/logo.png" border="0" style="vertical-align:top;" width="164" height="49" alt="Just Answer" /></a>
+        
+                     <font style="font:12px/20px  Helvetica, sans-serif; color:#999999;">Order ID:</font> <br />232323
+                
         </td></tr>
         
         <tr >
@@ -112,11 +102,10 @@
               <tr><td> <img align="left" src="http://ww2.justanswer.com/em/en/ma/te/color_gradient_bar.png" border="0" style="vertical-align:top;" width="543" height="" alt="Just Answer" />
         </td></tr>
               <tr bgcolor="#ffffff">
-                <td style="padding:10px 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;"> Hi <%=User.FirstName || 'there'%>,</td>
+                <td style="padding:10px 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;"> Hi Nata,</td>
               </tr>
               <tr bgcolor="#ffffff">
-                <td style="padding:0 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;"> <% if (PremiumService.IsFreeService)
-                 { %>Thank you for your order!<br>We wanted to confirm that we got your <%=Question.CategorySubName%> question and <%=PremiumService.ServiceName%> request. And just to be clear—you won’t be charged for this <%=PremiumService.ServiceName%>. It is free at this time with your membership.  <% } else { %> Thank you for your order. We see you accepted an offer for a <%= PremiumService.ServiceName %> regarding your <%= Question.CategorySubName %> question so we have charged your credit card ending in: <%=PaymentAccount.CcLastFourDigits %> for <%= formatCurrency(PremiumService.CurrencyISONumber, PremiumService.Price) %>. <% } %></td>
+                <td style="padding:0 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;">  Thank you for your order. We see you accepted an offer for a phone call regarding your law question so we have charged your credit card ending in: 4444 for $34. </td>
               </tr>
               
               
@@ -154,7 +143,7 @@
                 <td style="padding:15px 50px 14px; font:16px/24px  Helvetica, sans-serif; color:#333;">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
-                      <td class="button-outlook" bgcolor="#e85c41" align="center" style="border-radius:3px; font:bold 18px/20px  Helvetica, sans-serif; color:#fff;"><a _label="viewanswer_bu" href="<%=document.viewAnswer %>" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:13px 16px 14px;">Return to your conversation</a></td>
+                      <td class="button-outlook" bgcolor="#e85c41" align="center" style="border-radius:3px; font:bold 18px/20px  Helvetica, sans-serif; color:#fff;"><a _label="viewanswer_bu" href="https://my-secure.justanswer.com/question/index/undefined?jats=454545&r=ste|TRX_AdditionalServiceAccepted_US_20200907|4343|viewanswer_bu&utm_content=viewanswer_bu&utm_campaign=TRX_AdditionalServiceAccepted_US_20200907&utm_source=sys&utm_medium=email" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:13px 16px 14px;">Return to your conversation</a></td>
                     </tr>
                   </table>
                 </td>
@@ -191,10 +180,10 @@
       </td>
       </tr>
               <tr>
-                <td style="padding:0 0 14px; font: 12px  Helvetica, sans-serif; color:#bdbdbd; ">This message was delivered to you, <a style="color: #52bad5; text-decoration: none" href="mailto:<%=User.EmailAddress %>"><%=User.EmailAddress %></a>,  because you asked a(n) <%= Question.CategorySubName %> question on <a _label="jacom_ln" style="color: #52bad5; text-decoration: none" href="<%=document.jaFooterUrl %>" target="new">JustAnswer.com</a>. If you feel you have received this message in error, please contact <a _label="contactsupp_ln" style="text-decoration:none; color:#52bad5;" href="http://<%= document.customerServUrl %>" target="new">customer service</a>.</td>
+                <td style="padding:0 0 14px; font: 12px  Helvetica, sans-serif; color:#bdbdbd; ">This message was delivered to you, <a style="color: #52bad5; text-decoration: none" href="mailto:gfgfgffg">gfgfgffg</a>,  because you asked a(n) law question on <a _label="jacom_ln" style="color: #52bad5; text-decoration: none" href="https://my-secure.justanswer.com?jats=454545&r=ste|TRX_AdditionalServiceAccepted_US_20200907|4343|jacom_ln&utm_content=jacom_ln&utm_campaign=TRX_AdditionalServiceAccepted_US_20200907&utm_source=sys&utm_medium=email" target="new">JustAnswer.com</a>. If you feel you have received this message in error, please contact <a _label="contactsupp_ln" style="text-decoration:none; color:#52bad5;" href="http://ww2.justanswer.com/help?jats=454545&r=ste|TRX_AdditionalServiceAccepted_US_20200907|4343|custServ_ln&utm_content=custServ_ln&utm_campaign=TRX_AdditionalServiceAccepted_US_20200907&utm_source=sys&utm_medium=email" target="new">customer service</a>.</td>
               </tr>
               <tr>
-                <td style="padding:0 0 14px; font: 12px  Helvetica, sans-serif; color:#bdbdbd; ">Copyright <%= formatDate(new Date(), "%4Y") %> JustAnswer LLC. All rights reserved. JustAnswer is a trademark of JustAnswer LLC. P.O. Box 29045, San Francisco, CA 94129</td>
+                <td style="padding:0 0 14px; font: 12px  Helvetica, sans-serif; color:#bdbdbd; ">Copyright 2021 JustAnswer LLC. All rights reserved. JustAnswer is a trademark of JustAnswer LLC. P.O. Box 29045, San Francisco, CA 94129</td>
               </tr>
       </table>
     </td>
